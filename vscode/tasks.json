@@ -1,0 +1,39 @@
+{
+    "tasks": [
+        {
+            "type": "che",
+            "label": "stop outyet",
+            "command": "kill $(pidof go)",
+            "target": {
+                "component": "go-cli"
+            }
+        },
+        {
+            "type": "che",
+            "label": "test outyet",
+            "command": "go test",
+            "target": {
+                "workingDir": "${CHE_PROJECTS_ROOT}/src/github.com/golang/example/outyet",
+                "component": "go-cli"
+            }
+        },
+        {
+            "type": "che",
+            "label": "run outyet",
+            "command": "go get -d && go run main.go",
+            "target": {
+                "workingDir": "${CHE_PROJECTS_ROOT}/src/github.com/golang/example/outyet",
+                "component": "go-cli"
+            }
+        },
+        {
+            "type": "che",
+            "label": "run current file",
+            "command": "go get -d && go run ${file}",
+            "target": {
+                "workingDir": "${fileDirname}",
+                "component": "go-cli"
+            }
+        }
+    ]
+}
